@@ -1,4 +1,4 @@
-
+var http = require('http')
 var express = require('express'),
   config = require('./config/config'),
   glob = require('glob'),
@@ -18,9 +18,6 @@ var app = express();
 
 require('./config/express')(app, config);
 
-app.listen(config.port);
-
-
 // -       ' ' ' '
 // -       | | | |
 // -    @@@@@@@@@@@@@
@@ -33,3 +30,16 @@ app.listen(config.port);
 // -    _____)*(_____
 // -   /_____________\
 //       mucha torta
+
+var server = http.createServer(app)
+  var io = require('socket.io')(server)
+  io.on('connection', function(sock, err){
+    if(err) console.log(err)
+    console.log('connection', sock)
+    sock.on('message', function(dt) {
+      console.log(dt)
+      sock.emit('message', 'eyyy sup')
+    })
+  })
+
+server.listen(config.port)
