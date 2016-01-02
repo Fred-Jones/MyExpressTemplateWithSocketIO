@@ -1,0 +1,26 @@
+extends layout
+block css
+  link(rel='stylesheet' href='public/css/user.css')
+block content
+  .page
+    .chat
+      input.chatinput(type='text' placeholder='Chatear...')
+      .submitchat Send
+          
+ style(type='text/css').
+   .page{
+      width: 100vw;
+      height: 100vh;
+      
+   }
+   .chat{
+      position: fixed;
+      bottom: 0px;
+      width: 20vw;
+      height: 30vh;
+      border: 2px solid blue
+   }
+   .chatinput{
+      border: 2px dotted blue;
+   }
+block script
